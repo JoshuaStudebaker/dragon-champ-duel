@@ -1,5 +1,10 @@
 <template>
   <main class="container-fluid">
+    <div class="row float-right" v-if="activeChampion.imgUrl && activeDragon.imgUrl">
+      
+      <button class="btn btn-danger">Fight!</button>
+
+    </div>
     <div class="row">
       <div id="champions" class="col-3">
         <champion-component
