@@ -9,11 +9,19 @@ export default new Vuex.Store({
   state: {
     champions: [],
     dragons: [],
+    activeChamp: {},
+    activeDragon: {}
   },
   mutations: {
     setAllChampions(state, champions) {
       state.champions = champions;
     },
+    setAllDragons(state, dragons) {
+      state.dragons = dragons
+    },
+    setActiveChampion(state, activeChamp){
+      state.activeChamp = activeChamp
+    }
   },
   actions: {
     async getAllChampions({ commit }) {
@@ -25,6 +33,23 @@ export default new Vuex.Store({
         console.error(error);
       }
     },
+    async getAllDragons({ commit }) {
+      try {
+        let res = await api.get("dragons");
+        commit("setAllDragons", res.data);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    async getChampionbyId({commit}, champId){
+      try{
+        let res = await api.get("champions/"+champId);
+        console.log(res)
+        commit("setActiveChampion", res.data)
+      } catch (error) {
+        console.error(error);
+      }
+    }
   },
   modules: {},
 });

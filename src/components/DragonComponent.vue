@@ -5,9 +5,9 @@
       <h4 class="card-title">{{ dragonProp.name }}</h4>
       <h5 class="card-subtitle text-muted">Hit Points: {{ dragonProp.hp }}</h5>
     </div>
-    <button type="button" :@click="chooseChampion(dragonProp._id)">
-      Choose your Champion
-    </button>
+    <!-- <button type="button" :@click="chooseDragon(dragonProp._id)">
+      Choose your Dragon
+    </button> -->
   </div>
 </template>
 

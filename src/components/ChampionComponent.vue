@@ -6,10 +6,10 @@
     <div class="card-body">
       <h4 class="card-title">{{ champProp.name }}</h4>
       <h5 class="card-subtitle text-muted">
-        Race: {{ champProp.race }} - Class: {{ champProp.class }}
+        Race: {{ champProp.race }} - Class: {{ champProp.class }} - Hit Points: {{champProp.hp}}
       </h5>
     </div>
-    <button type="button" :@click="chooseChampion(champProp._id)">
+    <button type="button" @click="chooseChampion(champProp._id)">
       Choose your Champion
     </button>
   </div>
@@ -22,13 +22,13 @@ export default {
   data() {
     return {};
   },
-};
+  methods: {
+  chooseChampion(champId){
+    this.$store.dispatch("getChampionbyId", champId)
+  }
 
-// methods{
-//   // chooseChampion(champId){
-
-//   // }
-// }}
+}
+}
 </script>
 
 <style scoped></style>
