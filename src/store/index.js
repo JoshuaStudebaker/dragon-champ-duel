@@ -21,6 +21,9 @@ export default new Vuex.Store({
     },
     setActiveChampion(state, activeChamp){
       state.activeChamp = activeChamp
+    },
+    setActiveDragon(state, activeDragon){
+      state.activeDragon = activeDragon
     }
   },
   actions: {
@@ -49,7 +52,16 @@ export default new Vuex.Store({
       } catch (error) {
         console.error(error);
       }
+    },
+    async getDragonbyId({commit}, dragonId){
+      try {
+        let res = await api.get("dragons/"+dragonId)
+        commit("setActiveDragon", res.data)
+      } catch (error) {
+        console.error(error)
+      }
     }
+
   },
   modules: {},
 });

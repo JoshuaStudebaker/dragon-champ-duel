@@ -5,9 +5,9 @@
       <h4 class="card-title">{{ dragonProp.name }}</h4>
       <h5 class="card-subtitle text-muted">Hit Points: {{ dragonProp.hp }}</h5>
     </div>
-    <!-- <button type="button" :@click="chooseDragon(dragonProp._id)">
+    <button type="button" @click="chooseDragon(dragonProp._id)">
       Choose your Dragon
-    </button> -->
+    </button>
   </div>
 </template>
 
@@ -18,6 +18,11 @@ export default {
   data() {
     return {};
   },
+  methods: {
+    chooseDragon(dragonId){
+      this.$store.dispatch("getDragonbyId", dragonId)
+    }
+  }
 };
 </script>
 

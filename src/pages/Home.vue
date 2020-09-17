@@ -14,10 +14,10 @@
         :dragonProp="dragon" />
       </div>
       <div id="active-champ" class="col-3">
-         <img v-if="activeChampion" :src="activeChampion.imgUrl">
+         <img class="img-fluid" v-if="activeChampion" :src="activeChampion.imgUrl">
       </div>
       <div id="active-dragon" class="col-3">
-
+         <img class="img-fluid" v-if="activeChampion" :src="activeDragon.imgUrl">
       </div>
     </div>
   </main>
