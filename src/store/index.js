@@ -10,7 +10,8 @@ export default new Vuex.Store({
     champions: [],
     dragons: [],
     activeChamp: {},
-    activeDragon: {}
+    activeDragon: {},
+    activeGame: {}
   },
   mutations: {
     setAllChampions(state, champions) {
@@ -24,9 +25,20 @@ export default new Vuex.Store({
     },
     setActiveDragon(state, activeDragon){
       state.activeDragon = activeDragon
+    },
+    setGame(state, game){
+      state.activeGame = game
     }
   },
   actions: {
+    async getGameById({commit}, gameId){
+      try {
+        let res = await api.get("games/"+gameId)
+        commit("setGame", res.data)
+      } catch (error) {
+        console.error(error)
+      }
+    },
     async getAllChampions({ commit }) {
       try {
         let res = await api.get("champions");
@@ -59,6 +71,14 @@ export default new Vuex.Store({
         commit("setActiveDragon", res.data)
       } catch (error) {
         console.error(error)
+      }
+    },
+     async startFight({commit},payload){
+      try {
+        let res = await api.post("games", payload)
+        router.push({name: "Game", params:{id: res.data._id }})
+      } catch (error) {
+        
       }
     }
 

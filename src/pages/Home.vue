@@ -1,8 +1,8 @@
 <template>
   <main class="container-fluid">
     <div class="row float-right" v-if="activeChampion.imgUrl && activeDragon.imgUrl">
-      
-      <button class="btn btn-danger">Fight!</button>
+
+      <button class="btn btn-danger" @click="startFight">Fight!</button>
 
     </div>
     <div class="row">
@@ -59,6 +59,12 @@ export default {
       return this.$store.state.activeDragon;
     }
   },
+  methods: {
+    startFight(){
+      let payload = {champion: this.activeChampion._id, dragon: this.activeDragon._id}
+      this.$store.dispatch("startFight",payload)
+    }
+  }
 };
 </script>
 
